@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="800" height="520" role="img" aria-label="极夜微光">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#123a5c"/>
+      <stop offset="1" stop-color="#04080f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="url(#bg)"/>
+  <g><rect x="0" y="330" width="800" height="2" fill="#7fe3ff" fill-opacity="0.75"/><circle cx="560" cy="330" r="54" fill="#7fe3ff" fill-opacity="0.16"/></g>
+  <text x="60" y="452" font-family="Songti SC, SimSun, serif" font-size="40" fill="#f2f6ff" fill-opacity="0.92">极夜微光</text>
+  <text x="62" y="484" font-family="Consolas, monospace" font-size="13" fill="#e6eeff" fill-opacity="0.55" letter-spacing="3">GALLERY / 06</text>
+</svg>

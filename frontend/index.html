@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+  姓名：王振旭 | 学号：24002120207 | 时间：2026-11-20 | 大模型：DeepSeek-V4.1-Flash
+  功能：科技图文站首页，展示项目信息、canvas 粒子动画与全部页面入口
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="科技图文站：全栈项目初始化的课堂作业，Express + MySQL 驱动">
+    <title>科技图文站 · 王振旭</title>
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<header class="wzx_hero">
+    <canvas class="wzx_canvas" id="wzx_canvas" aria-hidden="true"></canvas>
+    <div class="wzx_shell">
+        <nav class="wzx_topbar" aria-label="页面导航">
+            <a class="wzx_brand" href="./index.html">
+                <span class="wzx_brand-mark">TX</span>
+                <span>科技图文站</span>
+            </a>
+            <div class="wzx_topnav">
+                <a href="./database.html">数据库测试</a>
+                <a href="./news.html">科技新闻</a>
+                <a href="./gallery.html">图文列表</a>
+            </div>
+        </nav>
+
+        <div class="wzx_hero-inner">
+            <p class="wzx_kicker">FULL-STACK INIT / 2026</p>
+            <h1>科技图文站<br>从数据库长出来的页面</h1>
+            <p class="wzx_lead">原生 HTML/CSS/JS 搭前端，Express 提供接口，MySQL 存数据。
+                页面上的每一条新闻、每一张图文，都来自真实的数据库查询。</p>
+            <div class="wzx_identity">
+                <span class="wzx_chip">姓名：王振旭</span>
+                <span class="wzx_chip">学号：24002120207</span>
+                <span class="wzx_chip">项目类别：模仿</span>
+                <span class="wzx_chip">端口：8207</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="wzx_main wzx_shell" id="wzx_directory">
+    <div class="wzx_section-head">
+        <h2>页面入口</h2>
+        <span>共 3 个功能页面</span>
+    </div>
+
+    <div class="wzx_grid">
+        <a class="wzx_card" href="./database.html">
+            <div>
+                <span class="wzx_card-tag">DATABASE</span>
+                <h3>数据库连接测试</h3>
+                <p>输入用户名与密码，通过 /api/db-test 真实连接 MySQL，成功显示版本，失败显示原始错误。</p>
+            </div>
+            <span class="wzx_card-open">打开页面 →</span>
+        </a>
+        <a class="wzx_card" href="./news.html">
+            <div>
+                <span class="wzx_card-tag">NEWS</span>
+                <h3>科技新闻列表</h3>
+                <p>读取 wzx_news 表，按发布时间倒序展示标题、摘要、来源与时间。</p>
+            </div>
+            <span class="wzx_card-open">打开页面 →</span>
+        </a>
+        <a class="wzx_card" href="./gallery.html">
+            <div>
+                <span class="wzx_card-tag">GALLERY</span>
+                <h3>图文列表</h3>
+                <p>读取 wzx_gallery 表，网格展示上图下文卡片，图片失败自动换成占位色块。</p>
+            </div>
+            <span class="wzx_card-open">打开页面 →</span>
+        </a>
+    </div>
+</main>
+
+<footer class="wzx_footer">
+    <div class="wzx_shell">王振旭 · 24002120207 · Node.js + Express + MySQL · 接口前缀 /api</div>
+</footer>
+
+<script src="./js/particles.js"></script>
+</body>
+</html>

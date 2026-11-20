@@ -1,0 +1,352 @@
+/*
+  姓名：王振旭 | 学号：24002120207 | 时间：2026-11-20 | 大模型：DeepSeek-V4.1-Flash
+  功能：全站共用样式（深色科技风，含首页、数据库测试、新闻、图文列表）
+*/
+:root {
+  --wzx_bg: #0b1020;
+  --wzx_bg-soft: #131a30;
+  --wzx_card: rgba(22, 30, 52, 0.86);
+  --wzx_line: rgba(120, 150, 220, 0.18);
+  --wzx_text: #e8eefc;
+  --wzx_muted: #98a6c7;
+  --wzx_accent: #5ea0ff;
+  --wzx_accent-2: #66e0c2;
+  --wzx_warn: #ff8f6b;
+  --wzx_ok: #5be2a2;
+  --wzx_shadow: 0 22px 50px rgba(4, 8, 20, 0.45);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  margin: 0;
+  color: var(--wzx_text);
+  background: var(--wzx_bg);
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  line-height: 1.7;
+}
+
+a { color: inherit; }
+
+.wzx_shell {
+  width: min(1040px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.wzx_topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 0;
+}
+
+.wzx_brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.wzx_brand-mark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 10px;
+  color: #06101f;
+  background: linear-gradient(140deg, var(--wzx_accent-2), var(--wzx_accent));
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.wzx_topnav { display: flex; gap: 16px; font-size: 13px; color: var(--wzx_muted); }
+.wzx_topnav a { text-decoration: none; }
+.wzx_topnav a:hover, .wzx_topnav a:focus-visible { color: var(--wzx_accent-2); }
+
+/* 首页 */
+.wzx_hero {
+  position: relative;
+  padding: 76px 0 62px;
+  overflow: hidden;
+}
+
+.wzx_canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wzx_hero-inner { position: relative; z-index: 1; max-width: 640px; }
+
+.wzx_kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  color: var(--wzx_accent-2);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.wzx_kicker::before {
+  width: 22px;
+  height: 2px;
+  background: var(--wzx_accent-2);
+  content: "";
+}
+
+.wzx_hero h1 {
+  margin: 0;
+  font-size: clamp(34px, 6.4vw, 60px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.wzx_hero p.wzx_lead {
+  max-width: 520px;
+  margin: 18px 0 0;
+  color: var(--wzx_muted);
+  font-size: 15px;
+}
+
+.wzx_identity {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 0;
+}
+
+.wzx_chip {
+  padding: 5px 13px;
+  border: 1px solid var(--wzx_line);
+  border-radius: 999px;
+  color: #cfdcf7;
+  background: rgba(94, 160, 255, 0.08);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.wzx_main { padding: 8px 0 70px; }
+
+.wzx_section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 34px 0 16px;
+}
+
+.wzx_section-head h2 { margin: 0; font-size: 18px; letter-spacing: 0.01em; }
+.wzx_section-head span { color: var(--wzx_muted); font-size: 12px; }
+
+.wzx_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.wzx_card {
+  position: relative;
+  display: flex;
+  min-height: 168px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid var(--wzx_line);
+  border-radius: 16px;
+  background: var(--wzx_card);
+  text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.wzx_card:hover, .wzx_card:focus-visible {
+  border-color: rgba(94, 160, 255, 0.55);
+  box-shadow: var(--wzx_shadow);
+  outline: none;
+  transform: translateY(-3px);
+}
+
+.wzx_card-tag {
+  align-self: flex-start;
+  padding: 2px 9px;
+  border-radius: 6px;
+  color: #bcd4ff;
+  background: rgba(94, 160, 255, 0.14);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+}
+
+.wzx_card h3 { margin: 14px 0 6px; font-size: 17px; }
+.wzx_card p { margin: 0; color: var(--wzx_muted); font-size: 13px; }
+.wzx_card-open { margin-top: 16px; color: var(--wzx_accent-2); font-size: 12.5px; font-weight: 700; }
+
+/* 内页通用 */
+.wzx_page-head { padding: 30px 0 8px; }
+.wzx_page-head h1 { margin: 0; font-size: clamp(24px, 4vw, 32px); letter-spacing: -0.02em; }
+.wzx_page-head p { margin: 8px 0 0; color: var(--wzx_muted); font-size: 13.5px; }
+
+.wzx_panel {
+  margin: 20px 0 0;
+  padding: 22px;
+  border: 1px solid var(--wzx_line);
+  border-radius: 16px;
+  background: var(--wzx_card);
+  box-shadow: var(--wzx_shadow);
+}
+
+.wzx_api {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding: 10px 13px;
+  border: 1px dashed rgba(94, 160, 255, 0.35);
+  border-radius: 10px;
+  color: var(--wzx_muted);
+  font-size: 12.5px;
+}
+
+.wzx_api code {
+  color: var(--wzx_accent-2);
+  font-family: Consolas, "Courier New", monospace;
+  word-break: break-all;
+}
+
+.wzx_field { margin: 0 0 14px; }
+.wzx_field label { display: block; margin: 0 0 6px; color: var(--wzx_muted); font-size: 12.5px; }
+
+.wzx_input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 13px;
+  border: 1px solid var(--wzx_line);
+  border-radius: 10px;
+  color: var(--wzx_text);
+  background: rgba(8, 13, 26, 0.7);
+  font: inherit;
+  font-size: 14px;
+}
+
+.wzx_input:focus { border-color: var(--wzx_accent); outline: none; }
+
+.wzx_btn {
+  min-height: 44px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 10px;
+  color: #06101f;
+  background: linear-gradient(140deg, var(--wzx_accent-2), var(--wzx_accent));
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.wzx_btn:disabled { opacity: 0.6; cursor: progress; }
+.wzx_btn:focus-visible { outline: 2px solid var(--wzx_accent-2); outline-offset: 3px; }
+
+.wzx_result {
+  margin: 16px 0 0;
+  padding: 13px 15px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.wzx_result--ok { color: #bff7dd; border: 1px solid rgba(91, 226, 162, 0.4); background: rgba(91, 226, 162, 0.1); }
+.wzx_result--err { color: #ffd2c5; border: 1px solid rgba(255, 143, 107, 0.42); background: rgba(255, 143, 107, 0.1); }
+.wzx_result--idle { color: var(--wzx_muted); border: 1px dashed var(--wzx_line); background: rgba(255, 255, 255, 0.02); }
+
+/* 新闻列表 */
+.wzx_news { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+
+.wzx_news-item {
+  padding: 16px 18px;
+  border: 1px solid var(--wzx_line);
+  border-radius: 12px;
+  background: rgba(10, 16, 32, 0.55);
+}
+
+.wzx_news-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--wzx_muted);
+  font-size: 12px;
+}
+
+.wzx_news-item h3 { margin: 6px 0 4px; font-size: 16px; line-height: 1.5; }
+.wzx_news-item p { margin: 0; color: var(--wzx_muted); font-size: 13px; }
+.wzx_badge { color: var(--wzx_accent-2); }
+
+/* 图文网格 */
+.wzx_gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.wzx_photo {
+  overflow: hidden;
+  border: 1px solid var(--wzx_line);
+  border-radius: 14px;
+  background: var(--wzx_bg-soft);
+}
+
+.wzx_photo-img {
+  display: block;
+  width: 100%;
+  height: 168px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #1b2547, #2f1f3f);
+}
+
+.wzx_photo-img--fallback {
+  display: grid;
+  place-items: center;
+  color: var(--wzx_muted);
+  background: linear-gradient(135deg, #1b2547, #3a2233);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.wzx_photo-body { padding: 14px 16px 18px; }
+.wzx_photo-body h3 { margin: 0 0 6px; font-size: 15.5px; }
+.wzx_photo-body p { margin: 0; color: var(--wzx_muted); font-size: 12.5px; }
+.wzx_photo-cat {
+  display: inline-block;
+  margin: 0 0 8px;
+  color: var(--wzx_accent-2);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.wzx_state {
+  margin: 0;
+  color: var(--wzx_muted);
+  font-size: 13px;
+}
+
+.wzx_footer {
+  padding: 22px 0 34px;
+  border-top: 1px solid var(--wzx_line);
+  color: var(--wzx_muted);
+  font-size: 12px;
+}
+
+@media (max-width: 640px) {
+  .wzx_hero { padding: 52px 0 44px; }
+  .wzx_grid { grid-template-columns: 1fr; }
+  .wzx_photo-img { height: 150px; }
+  .wzx_topnav { display: none; }
+}
