@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+  姓名：王振旭 | 学号：24002120207 | 时间：2026-11-20 | 大模型：DeepSeek-V4.1-Flash
+  功能：科技新闻列表页，读取 /api/news 展示数据库中的新闻
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="读取数据库 wzx_news 表的科技新闻列表">
+    <title>科技新闻 · 科技图文站</title>
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="wzx_shell">
+    <nav class="wzx_topbar" aria-label="页面导航">
+        <a class="wzx_brand" href="./index.html">
+            <span class="wzx_brand-mark">TX</span>
+            <span>科技图文站</span>
+        </a>
+        <div class="wzx_topnav">
+            <a href="./database.html">数据库测试</a>
+            <a href="./gallery.html">图文列表</a>
+        </div>
+    </nav>
+
+    <header class="wzx_page-head">
+        <h1>科技新闻</h1>
+        <p>数据来自 MySQL 表 <code>wzx_news</code>，按发布时间倒序排列。</p>
+    </header>
+
+    <main>
+        <section class="wzx_panel" aria-labelledby="wzx_newsTitle">
+            <h2 id="wzx_newsTitle" class="wzx_state" style="color:#cfdcf7;font-size:14px;margin-bottom:14px;">接口与数据</h2>
+
+            <div class="wzx_api">
+                <span>接口</span>
+                <code id="wzx_apiUrl">/api/news</code>
+                <a href="/api/news" target="_blank" rel="noopener" style="color:#66e0c2;font-size:12.5px;">直接打开接口 ↗</a>
+            </div>
+
+            <p class="wzx_state" id="wzx_state">正在加载……</p>
+            <ul class="wzx_news" id="wzx_list"></ul>
+        </section>
+    </main>
+
+    <footer class="wzx_footer">王振旭 · 24002120207 · 接口返回 { code, msg, data: { list, total } }</footer>
+</div>
+
+<script src="./js/news.js"></script>
+</body>
+</html>

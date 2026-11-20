@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+  姓名：王振旭 | 学号：24002120207 | 时间：2026-11-20 | 大模型：DeepSeek-V4.1-Flash
+  功能：数据库连接测试页，提交用户名与密码到 /api/db-test 并展示成功或失败提示
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="测试 MySQL 数据库连接，成功显示版本，失败显示错误信息">
+    <title>数据库连接测试 · 科技图文站</title>
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="wzx_shell">
+    <nav class="wzx_topbar" aria-label="页面导航">
+        <a class="wzx_brand" href="./index.html">
+            <span class="wzx_brand-mark">TX</span>
+            <span>科技图文站</span>
+        </a>
+        <div class="wzx_topnav">
+            <a href="./news.html">科技新闻</a>
+            <a href="./gallery.html">图文列表</a>
+        </div>
+    </nav>
+
+    <header class="wzx_page-head">
+        <h1>数据库连接测试</h1>
+        <p>用户名默认 root，密码按本机 MySQL 实际密码填写。点击后由后端用这套凭据真实连一次 MySQL。</p>
+    </header>
+
+    <main>
+        <section class="wzx_panel" aria-labelledby="wzx_formTitle">
+            <h2 id="wzx_formTitle" class="wzx_state" style="color:#cfdcf7;font-size:14px;margin-bottom:14px;">连接参数</h2>
+
+            <div class="wzx_api">
+                <span>接口</span><code>POST /api/db-test</code>
+            </div>
+
+            <form id="wzx_form" novalidate>
+                <div class="wzx_field">
+                    <label for="wzx_user">用户名</label>
+                    <input class="wzx_input" id="wzx_user" name="user" type="text" value="root" autocomplete="username">
+                </div>
+                <div class="wzx_field">
+                    <label for="wzx_password">密码</label>
+                    <input class="wzx_input" id="wzx_password" name="password" type="password" value="123456" autocomplete="current-password">
+                </div>
+                <button class="wzx_btn" id="wzx_submit" type="submit">测试连接</button>
+            </form>
+
+            <p class="wzx_result wzx_result--idle" id="wzx_result" role="status" aria-live="polite">还没有测试，点击按钮开始。</p>
+        </section>
+    </main>
+
+    <footer class="wzx_footer">王振旭 · 24002120207 · 凭据来自输入框，服务端数据库信息保存在 backend/.env</footer>
+</div>
+
+<script src="./js/database.js"></script>
+</body>
+</html>

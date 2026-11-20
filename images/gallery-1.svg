@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="800" height="520" role="img" aria-label="光之穹顶">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b3f8f"/>
+      <stop offset="1" stop-color="#0b1020"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="url(#bg)"/>
+  <g><circle cx="400" cy="300" r="140" fill="none" stroke="#7eb2ff" stroke-opacity="0.42" stroke-width="1.4"/><circle cx="400" cy="300" r="190" fill="none" stroke="#7eb2ff" stroke-opacity="0.33999999999999997" stroke-width="1.7999999999999998"/><circle cx="400" cy="300" r="240" fill="none" stroke="#7eb2ff" stroke-opacity="0.26" stroke-width="2.2"/><circle cx="400" cy="300" r="290" fill="none" stroke="#7eb2ff" stroke-opacity="0.18" stroke-width="2.6"/></g>
+  <text x="60" y="452" font-family="Songti SC, SimSun, serif" font-size="40" fill="#f2f6ff" fill-opacity="0.92">光之穹顶</text>
+  <text x="62" y="484" font-family="Consolas, monospace" font-size="13" fill="#e6eeff" fill-opacity="0.55" letter-spacing="3">GALLERY / 01</text>
+</svg>

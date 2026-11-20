@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="800" height="520" role="img" aria-label="液态金属">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a4a63"/>
+      <stop offset="1" stop-color="#0d1119"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="url(#bg)"/>
+  <g><path d="M210 300 C 210 180, 330 130, 420 180 C 520 236, 560 190, 610 260 C 660 330, 600 430, 500 440 C 400 450, 340 410, 290 400 C 232 388, 210 360, 210 300 Z" fill="#9fd4ff" fill-opacity="0.22" stroke="#9fd4ff" stroke-opacity="0.6" stroke-width="1.6"/></g>
+  <text x="60" y="452" font-family="Songti SC, SimSun, serif" font-size="40" fill="#f2f6ff" fill-opacity="0.92">液态金属</text>
+  <text x="62" y="484" font-family="Consolas, monospace" font-size="13" fill="#e6eeff" fill-opacity="0.55" letter-spacing="3">GALLERY / 04</text>
+</svg>
