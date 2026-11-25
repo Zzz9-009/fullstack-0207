@@ -13,7 +13,26 @@ const wzx_config = {
   user: process.env.DB_USER || "root",
   password: process.env.DB_PASSWORD || "",
   database: process.env.DB_NAME || "wzx_fullstack",
-  serverPort: Number(process.env.PORT || 8207)
+  serverPort: Number(process.env.PORT || 8207),
+  ai: {
+    // 两个平台都兼容 OpenAI 接口格式，切换平台只需换 key、baseUrl、model 三个值
+    providers: {
+      siliconflow: {
+        name: "硅基流动",
+        apiKey: process.env.SILICONFLOW_API_KEY || "",
+        baseUrl: (process.env.SILICONFLOW_BASE_URL || "https://api.siliconflow.cn/v1").replace(/\/+$/, ""),
+        model: process.env.SILICONFLOW_MODEL || "deepseek-ai/DeepSeek-V4-Flash"
+      },
+      qiniu: {
+        name: "七牛云",
+        apiKey: process.env.QINIU_API_KEY || "",
+        baseUrl: (process.env.QINIU_BASE_URL || "https://api.qnaigc.com/v1").replace(/\/+$/, ""),
+        model: process.env.QINIU_MODEL || "qiniu/conatus-free"
+      }
+    },
+    defaultProvider: process.env.AI_PROVIDER || "siliconflow",
+    timeout: 60000
+  }
 };
 
 module.exports = wzx_config;

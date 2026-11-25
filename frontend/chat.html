@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+  姓名：王振旭 | 学号：24002120207 | 时间：2026-11-20 | 大模型：DeepSeek-V4.1-Flash
+  功能：AI 聊天页，前端只把对话发给 /api/chat，由后端携带 Key 请求硅基流动
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="基于硅基流动大模型的 AI 聊天页面，支持多轮对话">
+    <title>AI 聊天 · 科技图文站</title>
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="wzx_shell">
+    <nav class="wzx_topbar" aria-label="页面导航">
+        <a class="wzx_brand" href="./index.html">
+            <span class="wzx_brand-mark">TX</span>
+            <span>科技图文站</span>
+        </a>
+        <div class="wzx_topnav">
+            <a href="./database.html">数据库测试</a>
+            <a href="./news.html">科技新闻</a>
+            <a href="./gallery.html">图文列表</a>
+            <a href="./service.html">在线客服</a>
+        </div>
+    </nav>
+
+    <header class="wzx_page-head">
+        <h1>AI 聊天</h1>
+        <p>浏览器只请求本项目的 <code>/api/chat</code>，API Key 保存在后端 <code>.env</code>，前端源码中不出现 Key。</p>
+    </header>
+
+    <main>
+        <section class="wzx_panel" aria-labelledby="wzx_chatTitle">
+            <h2 id="wzx_chatTitle" class="wzx_state">对话窗口</h2>
+
+            <div class="wzx_api">
+                <span>接口</span>
+                <code>POST /api/chat</code>
+                <span id="wzx_chatModel">模型：加载中……</span>
+            </div>
+
+            <div class="wzx_chat" id="wzx_chatLog" role="log" aria-live="polite" aria-label="聊天记录">
+                <div class="wzx_chat-empty" id="wzx_chatEmpty">在下面输入问题开始对话，例如“你好”，再问“我刚才问了什么”。</div>
+            </div>
+
+            <form class="wzx_chat-form" id="wzx_chatForm">
+                <label class="wzx_chat-label" for="wzx_chatInput">你的问题</label>
+                <textarea class="wzx_chat-input wzx_input" id="wzx_chatInput" rows="2"
+                          placeholder="输入问题后按 Enter 发送，Shift + Enter 换行" maxlength="2000"></textarea>
+                <div class="wzx_chat-actions">
+                    <span class="wzx_chat-status" id="wzx_chatStatus" aria-live="polite">就绪</span>
+                    <button class="wzx_btn" id="wzx_chatSend" type="submit">发送</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="wzx_footer">王振旭 · 24002120207 · 接口返回 { code, msg, data: { reply, model, usage } }</footer>
+</div>
+
+<script src="./js/chat.js"></script>
+</body>
+</html>

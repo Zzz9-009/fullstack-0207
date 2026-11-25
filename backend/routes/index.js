@@ -6,6 +6,7 @@ const express = require("express");
 const { wzx_health, wzx_dbTest } = require("../controllers/dbController");
 const { wzx_listNews } = require("../controllers/newsController");
 const { wzx_listGallery } = require("../controllers/galleryController");
+const { wzx_chat } = require("../controllers/chatController");
 
 const wzx_router = express.Router();
 
@@ -13,5 +14,6 @@ wzx_router.get("/health", wzx_health);
 wzx_router.post("/db-test", wzx_dbTest);
 wzx_router.get("/news", wzx_listNews);
 wzx_router.get("/gallery", wzx_listGallery);
+wzx_router.post("/chat", wzx_chat);
 
 module.exports = wzx_router;

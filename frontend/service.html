@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+  姓名：王振旭 | 学号：24002120207 | 时间：2026-11-25 | 大模型：DeepSeek-V4.1-Flash
+  功能：中华美食街在线客服，同一接口通过 provider 切换七牛 / 硅基流动平台
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="基于大模型的在线客服页面，只回答营业时间、招牌菜、配送范围三类问题">
+    <title>在线客服 · 中华美食街</title>
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="wzx_shell">
+    <nav class="wzx_topbar" aria-label="页面导航">
+        <a class="wzx_brand" href="./index.html">
+            <span class="wzx_brand-mark">TX</span>
+            <span>科技图文站</span>
+        </a>
+        <div class="wzx_topnav">
+            <a href="./news.html">科技新闻</a>
+            <a href="./chat.html">AI 聊天</a>
+            <a href="./gallery.html">图文列表</a>
+        </div>
+    </nav>
+
+    <header class="wzx_page-head">
+        <h1>中华美食街 · 在线客服</h1>
+        <p>只回答营业时间、招牌菜、配送范围三类问题，其他问题礼貌引导留言。同一套接口只换平台参数即可切换供应商。</p>
+    </header>
+
+    <main>
+        <section class="wzx_panel" aria-labelledby="wzx_serviceTitle">
+            <h2 id="wzx_serviceTitle" class="wzx_state">客服窗口</h2>
+
+            <div class="wzx_api">
+                <span>接口</span>
+                <code>POST /api/chat</code>
+                <span id="wzx_serviceModel">平台：硅基流动</span>
+            </div>
+
+            <div class="wzx_service-bar">
+                <label class="wzx_service-label" for="wzx_serviceProvider">模型平台</label>
+                <select class="wzx_input wzx_service-select" id="wzx_serviceProvider">
+                    <option value="siliconflow" selected>硅基流动 · deepseek-ai/DeepSeek-V4-Flash</option>
+                    <option value="qiniu">七牛云 · deepseek/deepseek-v4.1-flash</option>
+                </select>
+            </div>
+
+            <div class="wzx_chat-tips" id="wzx_serviceTips">
+                <button class="wzx_chat-tip" type="button" data-wzx-question="你们营业时间到几点？">营业时间</button>
+                <button class="wzx_chat-tip" type="button" data-wzx-question="有什么招牌菜推荐？">招牌菜</button>
+                <button class="wzx_chat-tip" type="button" data-wzx-question="你们送到哪里？配送费怎么算？">配送范围</button>
+                <button class="wzx_chat-tip" type="button" data-wzx-question="帮我写一份 Python 爬虫代码">超范围问题</button>
+            </div>
+
+            <div class="wzx_chat" id="wzx_serviceLog" role="log" aria-live="polite" aria-label="客服对话记录">
+                <div class="wzx_chat-empty" id="wzx_serviceEmpty">您好，我是中华美食街的客服小食，可以问营业时间、招牌菜和配送范围。</div>
+            </div>
+
+            <form class="wzx_chat-form" id="wzx_serviceForm">
+                <label class="wzx_chat-label" for="wzx_serviceInput">您的问题</label>
+                <textarea class="wzx_chat-input wzx_input" id="wzx_serviceInput" rows="2"
+                          placeholder="输入问题后按 Enter 发送，Shift + Enter 换行" maxlength="2000"></textarea>
+                <div class="wzx_chat-actions">
+                    <span class="wzx_chat-status" id="wzx_serviceStatus" aria-live="polite">就绪</span>
+                    <button class="wzx_btn" id="wzx_serviceSend" type="submit">发送</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="wzx_footer">王振旭 · 24002120207 · 平台参数来自 backend/.env，前端不出现任何 Key</footer>
+</div>
+
+<script src="./js/service.js"></script>
+</body>
+</html>

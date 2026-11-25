@@ -119,3 +119,51 @@
 ```
 
 - **说明**：查询 `wzx_gallery`，按 `create_time` 倒序；查询异常返回 `code=5002`；图片为本地 SVG，随 `frontend/` 一起由 Express 托管。
+
+---
+
+## 2026-11-25 · POST /api/chat
+
+- **方法**：POST
+- **请求参数**：
+
+```json
+{
+  "messages": [
+    { "role": "system", "content": "你是一个有用的助手，请用简体中文简洁准确地回答。" },
+    { "role": "user", "content": "你好" }
+  ],
+  "temperature": 0.7,
+  "maxTokens": 1024
+}
+```
+
+- **响应示例**：
+
+```json
+{
+  "code": 0,
+  "msg": "回答成功",
+  "data": {
+    "reply": "你好！有什么可以帮你的吗？",
+    "model": "deepseek-ai/DeepSeek-V4-Flash",
+    "usage": { "prompt_tokens": 20, "completion_tokens": 10, "total_tokens": 30 }
+  }
+}
+```
+
+- **说明**：后端读取 `backend/.env` 中的 `SILICONFLOW_API_KEY / SILICONFLOW_BASE_URL / SILICONFLOW_MODEL`，
+  携带 Key 转发到 `POST {BASE_URL}/chat/completions`，前端源码中不出现 Key。
+  `messages` 需为非空数组，`role` 仅接受 `system / user / assistant`；`temperature`、`maxTokens` 可省略，默认 0.7 与 1024。
+  失败码：`5003` 未配置 Key、`5004` 参数不合法、`5005` 上游返回 401/402/404/429 等、`5006` 返回结构异常、`5007` 请求超时或网络异常。
+  多轮对话由前端维护完整 `messages` 数组实现，模型本身不存储上下文。
+
+### 平台参数补充（2026-11-25 · 第三步）
+
+- **新增请求字段**：`provider`，可选 `siliconflow` 或 `qiniu`，省略时取 `.env` 的 `AI_PROVIDER`（默认 `siliconflow`）。
+- **响应新增**：`data.provider = { key, name }`，便于前端显示当前平台。
+- **平台配置位置**：`backend/.env` 中的 `SILICONFLOW_*` 与 `QINIU_*`，两个平台都是 OpenAI 兼容格式，切换只改 key、baseUrl、model 三个值。
+- **新增失败码**：`5008` provider 不在支持列表；七牛未填 Key 时复用 `5003` 并提示具体平台名。
+- **七牛模型选择（2026-11-25 实测）**：课程默认的 `qiniu/conatus-free` 返回 `429 free_campaign_global_limit`（免费模型全局限流，与 Key 无关）；
+  部分旧模型（`glm-4.5`、`qwen-turbo`、`meituan/longcat-flash-lite` 等）已下线返回 502，`deepseek-v3` 返回 `model_disabled`。
+  改用 `deepseek/deepseek-v4.1-flash` 后正常返回；该 Key 存在每分钟请求数（RPM）限制，连续快速请求会返回 `429 rate_limit_rpm_exceeded`，等一分钟即可恢复。

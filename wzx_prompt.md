@@ -167,3 +167,51 @@ https://spontaneous-valkyrie-4e4229.netlify.app/fullstack-init-lesson阅读并�
 ```
 同级目录没有写权限，项目改放到课堂练习目录下 fullstack-0207/；MySQL 不支持中文路径，二进制与数据目录放到 C:\Users\Asus\wzx-mysql 与 C:\Users\Asus\.cache\wzx-mysql-data，并在文档里写清楚启动方式。
 ```
+
+---
+
+## 记录 10
+
+- **时间**：2026-11-25
+- **大模型**：DeepSeek-V4.1-Flash
+- **提示词全文**：
+
+```
+https://spontaneous-valkyrie-4e4229.netlify.app/llm-app-lesson从第二步开始做 密钥是sk-****（已脱敏，仅写入 backend/.env，不记录到本文件）
+```
+
+---
+
+## 记录 11
+
+- **时间**：2026-11-25
+- **大模型**：DeepSeek-V4.1-Flash
+- **提示词全文**：
+
+```
+好的，执行第三步
+```
+
+---
+
+## 记录 12
+
+- **时间**：2026-11-25
+- **大模型**：DeepSeek-V4.1-Flash
+- **提示词全文**：
+
+```
+先帮我验证七牛 Key 配置
+```
+
+---
+
+## 记录 13
+
+- **时间**：2026-11-25
+- **大模型**：DeepSeek-V4.1-Flash
+- **提示词全文**：
+
+```
+sk-****（七牛 Key，已脱敏，仅写入 backend/.env，不记录到本文件）
+```
