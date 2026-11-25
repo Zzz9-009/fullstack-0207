@@ -26,6 +26,20 @@ wzx_app.use("/api", function (wzx_req, wzx_res) {
   wzx_res.status(404).json({ code: 4040, msg: "接口不存在：" + wzx_req.originalUrl, data: null });
 });
 
+// 上传类错误统一转成 JSON，避免 multer 抛错时前端拿到 HTML
+wzx_app.use(function (wzx_err, wzx_req, wzx_res, wzx_next) {
+  if (!wzx_err) {
+    wzx_next();
+    return;
+  }
+  const wzx_isSize = wzx_err.code === "LIMIT_FILE_SIZE";
+  const wzx_msg = wzx_isSize
+    ? "文件过大：图片限 10MB，音频与知识库文档限 20MB"
+    : (wzx_err.message || "上传失败");
+  console.error("[upload] 失败：", wzx_msg);
+  wzx_res.status(400).json({ code: 4009, msg: wzx_msg, data: null });
+});
+
 // 功能：启动服务并打印访问地址
 function wzx_start() {
   wzx_app.listen(wzx_config.serverPort, function () {

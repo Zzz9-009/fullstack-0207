@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+  姓名：王振旭 | 学号：24002120207 | 时间：2026-11-25 | 大模型：DeepSeek-V4.1-Flash
+  功能：知识库问答（RAG）页面，支持知识库文件上传解析、文件管理与基于知识库提问
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="知识库问答：上传文档解析入库，检索相关片段后交给大模型回答">
+    <title>知识库问答 · 科技图文站</title>
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="wzx_shell">
+    <nav class="wzx_topbar" aria-label="页面导航">
+        <a class="wzx_brand" href="./index.html">
+            <span class="wzx_brand-mark">TX</span>
+            <span>科技图文站</span>
+        </a>
+        <div class="wzx_topnav">
+            <a href="./index.html">首页</a>
+            <a href="./chat.html">AI 聊天</a>
+            <a href="./service.html">在线客服</a>
+            <a href="./vision.html">图像识别</a>
+            <a href="./asr.html">语音识别</a>
+        </div>
+    </nav>
+
+    <header class="wzx_page-head">
+        <h1>知识库问答 <span class="wzx_tag">RAG</span></h1>
+        <p>上传 txt / md / doc / docx / ppt / pptx / pdf，后端解析成文本并按段落切块入库；提问时先检索最相关的片段，再把资料交给大模型作答。</p>
+    </header>
+
+    <main class="wzx_kb-layout">
+        <section class="wzx_panel" aria-labelledby="wzx_kbUploadTitle">
+            <div class="wzx_api">
+                <span>接口</span>
+                <code>POST /api/kb/files</code>
+                <code>POST /api/kb/chat</code>
+            </div>
+
+            <h2 id="wzx_kbUploadTitle" class="wzx_panel-title">1. 上传知识库文件</h2>
+
+            <div class="wzx_upload">
+                <input class="wzx_input wzx_file" type="file" id="wzx_kbFile"
+                       accept=".txt,.md,.doc,.docx,.ppt,.pptx,.pdf">
+                <button class="wzx_btn" type="button" id="wzx_kbUploadBtn">上传并解析</button>
+            </div>
+            <p class="wzx_state" id="wzx_kbUploadStatus">支持 doc / docx / ppt / pptx / pdf / txt / md，单个文件不超过 20MB。</p>
+
+            <div class="wzx_result wzx_result--idle" id="wzx_kbUploadMsg">尚未上传文件</div>
+
+            <h3 class="wzx_panel-subtitle">知识库文件（<span id="wzx_kbCount">0</span>）</h3>
+            <ul class="wzx_kb-list" id="wzx_kbList">
+                <li class="wzx_state">正在读取知识库…</li>
+            </ul>
+        </section>
+
+        <section class="wzx_panel" aria-labelledby="wzx_kbAskTitle">
+            <h2 id="wzx_kbAskTitle" class="wzx_panel-title">2. 基于知识库提问</h2>
+
+            <div class="wzx_chat-tips">
+                <button class="wzx_chat-tip" type="button" data-wzx-question="你们营业时间到几点？">营业时间</button>
+                <button class="wzx_chat-tip" type="button" data-wzx-question="招牌菜有哪些，人均多少钱？">招牌菜</button>
+                <button class="wzx_chat-tip" type="button" data-wzx-question="配送范围多大，配送费怎么算？">配送范围</button>
+                <button class="wzx_chat-tip" type="button" data-wzx-question="这个网站用了哪些技术，数据库叫什么？">网站技术栈</button>
+            </div>
+
+            <div class="wzx_chat" id="wzx_kbChat" role="log" aria-live="polite" aria-label="知识库问答记录">
+                <div class="wzx_chat-empty" id="wzx_kbEmpty">知识库已内置 2 份示例文档，可以直接提问，也可以先上传自己的文件。</div>
+            </div>
+
+            <form class="wzx_chat-form" id="wzx_kbForm">
+                <label class="wzx_chat-label" for="wzx_kbQuestion">问题</label>
+                <textarea class="wzx_input wzx_chat-input" id="wzx_kbQuestion"
+                          placeholder="例如：你们营业时间到几点？招牌菜多少钱？" maxlength="500"></textarea>
+                <div class="wzx_chat-actions">
+                    <span class="wzx_chat-status" id="wzx_kbStatus">就绪</span>
+                    <button class="wzx_btn" type="submit" id="wzx_kbSendBtn">提问</button>
+                </div>
+            </form>
+
+            <div class="wzx_kb-sources" id="wzx_kbSources" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <footer class="wzx_footer">
+        <div>王振旭 · 24002120207 · 知识库存放在 backend/data/kb.json · 问答数据会打印在后端控制台</div>
+    </footer>
+</div>
+
+<script src="./js/kb.js"></script>
+</body>
+</html>

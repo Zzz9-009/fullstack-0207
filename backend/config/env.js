@@ -27,7 +27,10 @@ const wzx_config = {
         name: "七牛云",
         apiKey: process.env.QINIU_API_KEY || "",
         baseUrl: (process.env.QINIU_BASE_URL || "https://api.qnaigc.com/v1").replace(/\/+$/, ""),
-        model: process.env.QINIU_MODEL || "qiniu/conatus-free"
+        model: process.env.QINIU_MODEL || "qiniu/conatus-free",
+        // 视觉模型与语音识别模型走同一套 Key 和域名，单独配置便于以后替换
+        visionModel: process.env.QINIU_VISION_MODEL || "deepseek/deepseek-v4-flash-vision-exp",
+        asrModel: process.env.QINIU_ASR_MODEL || "qwen-audio-3.0-asr-flash"
       }
     },
     defaultProvider: process.env.AI_PROVIDER || "siliconflow",

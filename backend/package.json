@@ -12,6 +12,12 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "mysql2": "^3.12.0"
+    "iconv-lite": "^0.7.3",
+    "jszip": "^3.10.2",
+    "mammoth": "^1.13.0",
+    "multer": "^2.5.0",
+    "mysql2": "^3.12.0",
+    "pdf-parse": "^2.4.5",
+    "word-extractor": "^1.0.4"
   }
 }

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+  姓名：王振旭 | 学号：24002120207 | 时间：2026-11-25 | 大模型：DeepSeek-V4.1-Flash
+  功能：语音识别页面，录音或上传音频后调用七牛 Qwen-Audio-3.0-ASR-Flash 输出文字
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="语音识别：录音或上传音频，使用七牛 Qwen-Audio-3.0-ASR-Flash 转成文字">
+    <title>语音识别 · 科技图文站</title>
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="wzx_shell">
+    <nav class="wzx_topbar" aria-label="页面导航">
+        <a class="wzx_brand" href="./index.html">
+            <span class="wzx_brand-mark">TX</span>
+            <span>科技图文站</span>
+        </a>
+        <div class="wzx_topnav">
+            <a href="./index.html">首页</a>
+            <a href="./kb.html">知识库问答</a>
+            <a href="./vision.html">图像识别</a>
+            <a href="./chat.html">AI 聊天</a>
+        </div>
+    </nav>
+
+    <header class="wzx_page-head">
+        <h1>语音识别 <span class="wzx_tag">ASR</span></h1>
+        <p>直接用麦克风录音，或选择本地音频文件，后端转发给七牛 Qwen-Audio-3.0-ASR-Flash 模型，返回识别出的文字。</p>
+    </header>
+
+    <main>
+        <section class="wzx_panel" aria-labelledby="wzx_asrTitle">
+            <div class="wzx_api">
+                <span>接口</span>
+                <code>POST /api/asr</code>
+                <span>模型：qwen-audio-3.0-asr-flash</span>
+            </div>
+
+            <h2 id="wzx_asrTitle" class="wzx_panel-title">1. 录音</h2>
+
+            <div class="wzx_record-bar">
+                <button class="wzx_btn" type="button" id="wzx_asrRecordBtn">开始录音</button>
+                <button class="wzx_btn wzx_btn--ghost" type="button" id="wzx_asrStopBtn" disabled>停止录音</button>
+                <span class="wzx_record-dot" id="wzx_asrDot" aria-hidden="true"></span>
+                <span class="wzx_state" id="wzx_asrTimer">00:00 / 01:00</span>
+            </div>
+            <p class="wzx_state" id="wzx_asrRecordStatus">点击开始录音后请允许浏览器使用麦克风，最长 60 秒，到时会自动停止。</p>
+            <audio class="wzx_audio" id="wzx_asrAudio" controls hidden></audio>
+
+            <h2 class="wzx_panel-title wzx_asr-upload-title">2. 或者上传音频文件</h2>
+            <div class="wzx_upload">
+                <input class="wzx_input wzx_file" type="file" id="wzx_asrFile"
+                       accept=".wav,.mp3,.m4a,.webm,.ogg,.aac,.flac,.amr,audio/*">
+                <button class="wzx_btn" type="button" id="wzx_asrBtn">识别音频</button>
+            </div>
+            <p class="wzx_state" id="wzx_asrFileStatus">支持 wav / mp3 / m4a / webm / ogg，单个文件不超过 20MB。</p>
+
+            <h2 class="wzx_panel-title wzx_asr-upload-title">3. 识别结果</h2>
+            <div class="wzx_result wzx_result--idle" id="wzx_asrResult">识别出的文字会显示在这里。</div>
+            <p class="wzx_state" id="wzx_asrMeta"></p>
+        </section>
+    </main>
+
+    <footer class="wzx_footer">
+        <div>王振旭 · 24002120207 · 音频与识别结果会打印在后端控制台</div>
+    </footer>
+</div>
+
+<script src="./js/asr.js"></script>
+</body>
+</html>

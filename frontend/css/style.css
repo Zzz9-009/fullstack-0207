@@ -488,3 +488,179 @@ a { color: inherit; }
   .wzx_service-bar { align-items: flex-start; flex-direction: column; }
   .wzx_service-select { width: 100%; }
 }
+
+/* 知识库 / 图像识别 / 语音识别 */
+.wzx_tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 9px;
+  border-radius: 6px;
+  color: #bcd4ff;
+  background: rgba(94, 160, 255, 0.16);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  vertical-align: middle;
+}
+
+.wzx_panel-title { margin: 6px 0 12px; font-size: 15.5px; }
+.wzx_panel-subtitle { margin: 22px 0 10px; font-size: 13px; color: var(--wzx_muted); letter-spacing: 0.02em; }
+
+.wzx_kb-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.95fr) minmax(320px, 1.25fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.wzx_kb-layout .wzx_panel { margin-top: 20px; }
+
+.wzx_upload {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.wzx_file {
+  flex: 1 1 240px;
+  min-height: 42px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.wzx_file::file-selector-button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 8px;
+  color: #06101f;
+  background: linear-gradient(140deg, var(--wzx_accent-2), var(--wzx_accent));
+  font: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.wzx_kb-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+
+.wzx_kb-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--wzx_line);
+  border-radius: 12px;
+  background: rgba(10, 16, 32, 0.55);
+}
+
+.wzx_kb-item-main { min-width: 0; }
+.wzx_kb-name { margin: 0 0 4px; font-size: 13.5px; word-break: break-all; }
+.wzx_kb-meta { margin: 0; color: var(--wzx_muted); font-size: 12px; }
+.wzx_kb-note { margin: 6px 0 0; color: #ffd2c5; font-size: 11.5px; }
+
+.wzx_kb-del {
+  flex: none;
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 143, 107, 0.45);
+  border-radius: 8px;
+  color: #ffb9a4;
+  background: rgba(255, 143, 107, 0.1);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.wzx_kb-del:hover, .wzx_kb-del:focus-visible { border-color: rgba(255, 143, 107, 0.8); outline: none; }
+
+.wzx_kb-sources { display: grid; gap: 8px; }
+
+.wzx_src {
+  padding: 10px 13px;
+  border: 1px dashed var(--wzx_line);
+  border-radius: 10px;
+  background: rgba(8, 13, 26, 0.45);
+}
+
+.wzx_src-head { margin: 0 0 4px; color: var(--wzx_accent-2); font-size: 12px; }
+.wzx_src-preview { margin: 0; color: var(--wzx_muted); font-size: 12px; line-height: 1.6; }
+
+.wzx_vision-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(260px, 1.2fr);
+  gap: 16px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.wzx_preview-box {
+  margin: 0;
+  padding: 12px;
+  border: 1px dashed var(--wzx_line);
+  border-radius: 12px;
+  background: rgba(8, 13, 26, 0.5);
+  text-align: center;
+}
+
+.wzx_preview {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #060b18;
+}
+
+.wzx_preview-box figcaption { margin-top: 8px; }
+
+.wzx_vision-result { min-width: 0; }
+.wzx_vision-result .wzx_result { margin-top: 0; max-height: 320px; overflow-y: auto; }
+
+.wzx_record-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.wzx_record-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(152, 166, 199, 0.4);
+}
+
+.wzx_record-dot--on {
+  background: #ff6b4a;
+  box-shadow: 0 0 0 4px rgba(255, 107, 74, 0.18);
+  animation: wzx_pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes wzx_pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.wzx_btn--ghost {
+  color: #cfdcf7;
+  background: transparent;
+  border: 1px solid var(--wzx_line);
+}
+
+.wzx_btn--ghost:disabled { opacity: 0.45; }
+
+.wzx_audio { display: block; width: 100%; margin: 4px 0 10px; }
+.wzx_asr-upload-title { margin-top: 22px; }
+
+@media (max-width: 860px) {
+  .wzx_kb-layout, .wzx_vision-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .wzx_kb-layout .wzx_panel { padding: 18px; }
+  .wzx_file { flex-basis: 100%; }
+  .wzx_upload .wzx_btn { width: 100%; }
+}
+

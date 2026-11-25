@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+  姓名：王振旭 | 学号：24002120207 | 时间：2026-11-25 | 大模型：DeepSeek-V4.1-Flash
+  功能：图像识别页面，上传图片调用视觉模型返回中文描述
+-->
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="图像识别：上传图片，由视觉模型返回该图片的中文描述">
+    <title>图像识别 · 科技图文站</title>
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<div class="wzx_shell">
+    <nav class="wzx_topbar" aria-label="页面导航">
+        <a class="wzx_brand" href="./index.html">
+            <span class="wzx_brand-mark">TX</span>
+            <span>科技图文站</span>
+        </a>
+        <div class="wzx_topnav">
+            <a href="./index.html">首页</a>
+            <a href="./kb.html">知识库问答</a>
+            <a href="./chat.html">AI 聊天</a>
+            <a href="./asr.html">语音识别</a>
+        </div>
+    </nav>
+
+    <header class="wzx_page-head">
+        <h1>图像识别 <span class="wzx_tag">VISION</span></h1>
+        <p>上传一张图片，后端把图片转成 base64 交给七牛视觉模型，返回画面的主体、场景、颜色与可见文字描述。</p>
+    </header>
+
+    <main>
+        <section class="wzx_panel" aria-labelledby="wzx_visionTitle">
+            <div class="wzx_api">
+                <span>接口</span>
+                <code>POST /api/vision</code>
+                <span>模型：deepseek/deepseek-v4-flash-vision-exp</span>
+            </div>
+
+            <h2 id="wzx_visionTitle" class="wzx_panel-title">选择图片</h2>
+
+            <div class="wzx_upload">
+                <input class="wzx_input wzx_file" type="file" id="wzx_visionFile"
+                       accept="image/png,image/jpeg,image/webp,image/gif,image/bmp">
+                <button class="wzx_btn" type="button" id="wzx_visionBtn">开始识别</button>
+            </div>
+            <p class="wzx_state" id="wzx_visionStatus">支持 png / jpg / jpeg / webp / gif / bmp，单张不超过 10MB。</p>
+
+            <div class="wzx_vision-grid">
+                <figure class="wzx_preview-box">
+                    <img class="wzx_preview" id="wzx_visionPreview" alt="待识别图片预览" hidden>
+                    <figcaption class="wzx_state" id="wzx_visionCaption">还没有选择图片</figcaption>
+                </figure>
+
+                <div class="wzx_vision-result">
+                    <div class="wzx_result wzx_result--idle" id="wzx_visionResult">识别结果会显示在这里</div>
+                    <p class="wzx_state" id="wzx_visionMeta"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="wzx_footer">
+        <div>王振旭 · 24002120207 · 请求与响应数据会打印在后端控制台</div>
+    </footer>
+</div>
+
+<script src="./js/vision.js"></script>
+</body>
+</html>
